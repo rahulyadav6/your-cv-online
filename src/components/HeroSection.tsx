@@ -1,5 +1,5 @@
 
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
@@ -21,6 +21,16 @@ const HeroSection = () => {
         behavior: 'smooth',
       });
     }
+  };
+
+  const handleDownloadCV = () => {
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = '/RahulKumarYadav_CV.pdf'; // Make sure to add your CV to the public folder
+    link.download = 'RahulKumarYadav_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -45,6 +55,14 @@ const HeroSection = () => {
               className="bg-blue hover:bg-blue-dark text-white px-6 py-4 h-auto"
             >
               View My Projects
+            </Button>
+            <Button 
+              onClick={handleDownloadCV} 
+              variant="outline" 
+              className="border-blue text-blue hover:text-blue-dark px-6 py-4 h-auto"
+            >
+              <Download className="mr-2" size={20} />
+              Download CV
             </Button>
             <Button 
               onClick={scrollToContact} 
